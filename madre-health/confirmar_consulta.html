@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Agendamentos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .sidebar {
+        width: 130px;
+        /* Largura da sidebar */
+        background: linear-gradient(135deg, #140d92, #9f0808);
+        padding: 5px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        color: #ffffff;
+        font-family: 'Arial', sans-serif;
+        /* Fonte consistente */
+        margin-right: 20px;
+        /* Espaço à direita da sidebar */
+    }
+    
+    .sidebar h3 {
+        text-align: center;
+        font-size: 1em;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #ffffff;
+        /* Linha embaixo do título */
+        padding-bottom: 10px;
+    }
+    
+    .sidebar ul {
+        list-style-type: none;
+        /* Remove marcadores padrão */
+        padding: 0;
+    }
+    
+    .sidebar ul li {
+        background-color: rgba(255, 255, 255, 0.1);
+        /* Fundo com opacidade */
+        color: #ffffff;
+        margin-bottom: 10px;
+        /* Espaço entre itens */
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s, transform 0.2s;
+        /* Transições suaves */
+    }
+    
+    .sidebar ul li:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        /* Fundo mais claro ao passar o mouse */
+        transform: translateY(-2px);
+        /* Levanta o item ao passar o mouse */
+        cursor: pointer;
+        /* Muda o cursor para indicar ação */
+    }
+    
+    </style>
+</head>
+<body>
+
+<aside class="sidebar">
+    <h3>Aguardando confirmação</h3>
+    <ul id="eventList">
+        <!-- Os eventos serão adicionados aqui -->
+    </ul>
+</aside>
+
+<script>
+    // Função para buscar os agendamentos do arquivo JSON
+    fetch('agendamentos.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const eventList = document.getElementById('eventList');
+            data.forEach(agendamento => {
+                const li = document.createElement('li');
+                li.textContent = `Nome: ${agendamento.name}, Precedência: ${agendamento.precedencia}, 
+                                  Hora de Início: ${agendamento.startTime}, 
+                                  Hora de Fim: ${agendamento.endTime}, 
+                                  Data de Agendamento: ${agendamento.data_de_agendamento}`;
+                eventList.appendChild(li);
+            });
+        })
+        .catch(error => {
+            console.error('Erro ao buscar os dados:', error);
+        });
+
+        
+</script>
+
+</body>
+</html>

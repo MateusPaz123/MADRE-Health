@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADRE HEALTH</title>
+    <link rel="stylesheet" href="CSS/style_senha.css">
+
+    <style>
+        .error-message {
+            color: #f05a4f;
+            display: none;
+            /* Oculta a mensagem inicialmente */
+            margin-top: 8px;
+        }
+    </style>
+
+    <script>
+        function validatePasswords() {
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmar-senha').value;
+            const btn = document.querySelector('.btn');
+            const errorMessage = document.getElementById('error-message');
+
+            if (senha === confirmarSenha && senha !== '') {
+                btn.disabled = false;
+                errorMessage.style.display = 'none';
+            } else {
+                btn.disabled = true;
+                if (senha !== confirmarSenha) {
+                    errorMessage.style.display = 'block';
+                } else {
+                    errorMessage.style.display = 'none';
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="logo">
+            <img src="fotos/logo.jpg" alt="Logo">
+            <h1>MADRE HEALTH</h1>
+
+        </div>
+        <div class="form">
+            <p>Para sua segurança, insira sua senha e confirme-a.</p>
+            <form action="php/salvar.php" method="POST">
+                <div class="input-container">
+                    <div class="input-box">
+                        <input type="password" name="senha" id="senha" placeholder="Coloque sua senha" required oninput="validatePasswords()">
+                    </div>
+                    <div class="input-box">
+                        <input type="password" name="confirmar-senha" id="confirmar-senha" placeholder="Confirmar senha" required oninput="validatePasswords()">
+                    </div>
+                    <div class="error-message" id="error-message">As senhas não coincidem. Tente novamente.</div>
+                </div>
+                <button class="btn">FINALIZAR</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,441 @@
+/* Reset de margens e preenchimento, e definir box-sizing */
+
+* {
+    margin: 0;
+    /* Remove a margem padrão de todos os elementos */
+    padding: 0;
+    /* Remove o preenchimento padrão de todos os elementos */
+    box-sizing: border-box;
+    /* Inclui a borda e o preenchimento na largura e altura total dos elementos */
+}
+
+
+/* Estilo do corpo */
+
+body {
+    font-family: 'Arial', sans-serif;
+    /* Define a fonte do corpo */
+    background: linear-gradient(135deg, #005960, #009688);
+    /* Aplica um gradiente de fundo */
+    display: flex;
+    /* Usa Flexbox para layout */
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    height: 100vh;
+    /* Define a altura para ocupar 100% da viewport */
+    overflow: hidden;
+    /* Remove a rolagem */
+}
+
+
+/* Estilo da barra de progresso */
+
+.progress-bar {
+    width: 20%;
+    /* Largura total da barra */
+    background-color: #e0e0e0;
+    /* Cor de fundo da barra */
+    border-radius: 50px;
+    /* Cantos arredondados */
+    overflow: hidden;
+    /* Garante que o preenchimento não exceda a barra */
+    height: 10px;
+    /* Altura mais fina */
+    margin-top: 20px;
+    /* Espaçamento acima da barra */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Sombra ao redor da barra */
+}
+
+
+/* Estilo do preenchimento da barra */
+
+.progress {
+    width: 100%;
+    /* Largura do preenchimento (20%) */
+    height: 100%;
+    /* Altura total da barra */
+    background: linear-gradient(135deg, #009688, #1e8889);
+    /* Gradiente do preenchimento */
+    border-radius: 50px;
+    /* Cantos arredondados */
+    transition: width 0.5s ease, background-color 0.3s ease;
+    /* Transição suave */
+    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.5);
+    /* Sombra interna */
+}
+
+
+/* Efeito de hover na barra de progresso */
+
+.progress-bar:hover .progress {
+    background: linear-gradient(135deg, #1e8889, #009688);
+    /* Mudança de gradiente ao passar o mouse */
+    width: 22%;
+    /* Aumenta levemente o preenchimento ao passar o mouse */
+}
+
+
+/* Animação de pulso para o preenchimento */
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* Adiciona animação ao preenchimento */
+
+.progress {
+    animation: pulse 2s infinite;
+    /* Animação contínua de pulso */
+}
+
+
+/*
+
+
+/* Animação de pulso para o preenchimento */
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* Adiciona animação ao preenchimento */
+
+.progress {
+    animation: pulse 2s infinite;
+    /* Animação contínua de pulso */
+}
+
+
+/*
+
+/* Contêiner principal */
+
+.container {
+    padding: 40px;
+    border-radius: 30px;
+    /* Cantos bem arredondados */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    /* Sombra forte */
+    width: 400px;
+    background: rgba(41, 101, 101, 0.911);
+    /* Fundo branco semi-transparente */
+    backdrop-filter: blur(15px);
+    /* Efeito de desfoque no fundo */
+    animation: fadeIn 0.5s ease-in-out;
+    /* Animação de entrada */
+}
+
+
+/* Estilo da logo */
+
+.logo {
+    text-align: center;
+    /* Centraliza o texto */
+    margin-bottom: 30px;
+    /* Espaçamento abaixo da logo */
+}
+
+
+/* Animação de entrada para logo e texto */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        /* Fica visível */
+        transform: translateY(0);
+        /* Volta à posição original */
+    }
+}
+
+
+/* Estilo da imagem da logo */
+
+.logo img {
+    display: block;
+    margin: 0 auto;
+    max-width: 120px;
+    height: auto;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    /* Sombra da imagem */
+}
+
+
+/* Estilo do título e parágrafo */
+
+.logo h1,
+.logo p {
+    animation: fadeInUp 1s ease-in-out forwards;
+    /* Aplica a animação ao título e parágrafo */
+}
+
+
+/* Estilo do formulário de cadastro */
+
+.form {
+    padding: 30px;
+    /* Espaçamento interno */
+    text-align: center;
+    /* Centraliza texto */
+    animation: fadeIn 1s ease-in-out;
+    /* Animação do formulário ao entrar */
+}
+
+
+/* Animação de fade-in */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        /* Começa invisível */
+        transform: translateY(-20px);
+        /* Move para cima */
+    }
+    to {
+        opacity: 1;
+        /* Fica visível */
+        transform: translateY(0);
+        /* Volta à posição original */
+    }
+}
+
+
+/* Estilo do formulário de cadastro */
+
+.form {
+    padding: 30px;
+    /* Espaçamento interno */
+    border-radius: 15px;
+    /* Bordas arredondadas */
+    width: 300px;
+    /* Largura fixa */
+    text-align: center;
+    /* Centraliza texto */
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    /* Borda leve */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    /* Sombra do contêiner */
+    animation: fadeIn 1s ease-in-out;
+    /* Animação do formulário ao entrar */
+}
+
+
+/* Estilo do título */
+
+h1 {
+    margin: 10px 0 5px;
+    color: #91e3d5;
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    /* Sombra do texto */
+    animation: slideIn 0.5s ease forwards;
+    /* Animação de entrada do título */
+    opacity: 0;
+    /* Começa invisível */
+}
+
+
+/* Estilo do parágrafo */
+
+p {
+    margin: 0 0 10px;
+    /* Espaçamento ajustado */
+    color: #103d3e;
+    /* Cor do texto */
+}
+
+
+/* Estilo das imagens */
+
+img {
+    display: block;
+    /* Garante que a imagem seja um bloco */
+    margin: 0 auto;
+    /* Centraliza horizontalmente */
+    max-width: 100px;
+    /* Largura máxima */
+    height: auto;
+    /* Mantém a proporção */
+    border-radius: 50%;
+    /* Bordas arredondadas */
+    border: 4px solid #ffffff;
+    /* Borda branca */
+}
+
+.personal-form {
+    display: flex;
+    /* Usa Flexbox para layout do formulário */
+    flex-direction: column;
+    /* Alinha os itens em coluna */
+}
+
+label {
+    margin-bottom: 0 0 15px;
+    /* Espaço abaixo do rótulo */
+    color: #91e3d5;
+    /* Cor do texto do rótulo */
+    font-weight: bold;
+    /* Negrito */
+}
+
+input,
+select {
+    width: 100%;
+    /* Largura total dos inputs e selects */
+    margin-bottom: 15px;
+    /* Espaço abaixo de cada input/select */
+    padding: 10px;
+    /* Espaçamento interno dos inputs/selects */
+    border: 2px solid #009688;
+    /* Borda dos inputs/selects */
+    border-radius: 5px;
+    /* Cantos arredondados dos inputs/selects */
+    background: rgba(255, 255, 255, 0.464);
+    /* Fundo branco com 40% de opacidade */
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    /* Transições suaves para mudanças de estilo */
+}
+
+input:focus,
+select:focus {
+    border-color: #004d40;
+    /* Cor da borda ao focar no input/select */
+    box-shadow: 0 0 10px rgba(0, 150, 136, 0.5);
+    /* Sombra ao redor do input/select ao focar */
+}
+
+input:hover,
+select:hover {
+    box-shadow: 0 0 8px rgba(0, 150, 136, 0.3);
+    /* Sombra ao passar o mouse */
+    transform: translateY(-1px);
+    /* Levanta levemente o elemento ao passar o mouse */
+}
+
+
+/* Estilo do botão */
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #2b9c8f, #016b59);
+    /* Gradiente no botão */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    /* Para efeitos internos */
+    transition: transform 0.2s ease;
+    margin-bottom: 15px;
+    /* Espaçamento entre os botões */
+    font-size: 16px;
+    font-weight: bold;
+    /* Texto em negrito */
+}
+
+
+/* Efeito de animação no botão */
+
+button:hover {
+    background-color: #1e5657;
+    /* Cor ao passar o mouse */
+    transform: scale(1.05);
+    /* Aumenta levemente o botão */
+}
+
+
+/* Efeito de brilho ao passar o mouse */
+
+button:hover::after {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: 50%;
+    left: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    /* Camada branca semi-transparente */
+    border-radius: 50%;
+    /* Forma circular */
+    transform: translate(-50%, -50%) scale(0);
+    /* Começa invisível */
+    transition: transform 0.4s ease;
+}
+
+
+/* Efeito ao passar o mouse no botão */
+
+button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    /* Fica visível ao passar o mouse */
+}
+
+
+/* Estilo do botão ao ser pressionado */
+
+button:active {
+    transform: translateY(0);
+    /* Retorna à posição normal */
+}
+
+
+/* Animações */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        /* Começa invisível */
+        transform: translateY(20px);
+        /* Começa abaixo da posição final */
+    }
+    to {
+        opacity: 1;
+        /* Fica completamente visível */
+        transform: translateY(0);
+        /* Vai para a posição final */
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        /* Começa invisível */
+        transform: translateX(-20px);
+        /* Começa à esquerda da posição final */
+    }
+    to {
+        opacity: 1;
+        /* Fica completamente visível */
+        transform: translateX(0);
+        /* Vai para a posição final */
+    }
+}

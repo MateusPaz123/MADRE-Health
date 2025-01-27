@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Consulta</title>
+    <link rel="stylesheet" href="CSS/agendarsla.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Agendar Consulta</h1>
+        </header>
+
+        <!-- Menu Lateral -->
+        <div class="menu">
+            <button class="menu-btn" onclick="window.location.href='index.html'">
+                <img src="fotos/logo.jpg" alt="Home" class="icon">
+                <span class="label">Madre Health</span>
+            </button>
+
+            <button class="menu-btn" onclick="window.location.href='historico.html'">
+                <span class="emoji">📝</span>
+                <span class="label">Histórico</span>
+            </button>
+
+            <button class="menu-btn" onclick="window.location.href='perfil_paciente.php'">
+                <span class="emoji">😷</span>
+                <span class="label">Meu Perfil</span>
+            </button>
+
+            <button class="menu-btn" onclick="window.location.href='agendar.html'">
+                <span class="emoji">🖊️</span>
+                <span class="label">Agende sua consulta</span>
+            </button>
+        </div>
+
+        <!-- Filtro por Especialidade -->
+        <div class="filter-container">
+            <button class="filter-btn" onclick="toggleEspecialidades()">Filtrar por Especialidade</button>
+            <div id="especialidades-list" class="especialidades-list"></div>
+        </div>
+
+        <!-- Container para exibir os médicos -->
+        <div id="medicos-container"></div>
+    </div>
+
+    <script>
+        async function carregarMedicos() {
+            try {
+                const response = await fetch('php/exibir_dias.php');
+                const data = await response.json();
+    
+                const container = document.getElementById('medicos-container');
+                const especialidadesList = document.getElementById('especialidades-list');
+                const especialidadesSet = new Set();
+    
+                container.innerHTML = '';
+    
+                // Verificando se os dados retornados estão no formato esperado
+                if (Array.isArray(data)) {
+                    data.forEach(medico => {
+                        especialidadesSet.add(medico.especialidade);
+    
+                        const button = document.createElement('button');
+                        button.className = 'profile-image';
+                        button.onclick = () => {
+                            // Verificação para garantir que os dados do médico estão completos
+                            if (medico.nome && medico.especialidade && medico.dias_trabalho) {
+                                localStorage.setItem('selectedDoctor', JSON.stringify({
+                                    nome: medico.nome,
+                                    especialidade: medico.especialidade,
+                                    diasTrabalhados: medico.dias_trabalho // Inclui os dias de trabalho
+                                }));
+                                window.location.href = 'agendamento_paciente.html';
+                            } else {
+                                alert("Dados incompletos do médico.");
+                            }
+                        };
+    
+                        const nome = document.createElement('h3');
+                        nome.textContent = medico.nome;
+    
+                        const especialidade = document.createElement('p');
+                        especialidade.textContent = `Especialidade: ${medico.especialidade}`;
+    
+                        const dias = document.createElement('p');
+                        dias.textContent = `Dias de trabalho: ${medico.dias_trabalho.join(', ')}`;
+    
+                        button.appendChild(nome);
+                        button.appendChild(especialidade);
+                        button.appendChild(dias);
+                        container.appendChild(button);
+                    });
+    
+                    // Adicionando a opção "Todas" para mostrar todos os médicos
+                    especialidadesList.innerHTML = '';
+                    const allBtn = document.createElement('button');
+                    allBtn.textContent = 'Todas';
+                    allBtn.className = 'especialidade-btn';
+                    allBtn.onclick = () => filtrarMedicosPorEspecialidade('Todas');
+                    especialidadesList.appendChild(allBtn);
+    
+                    // Adicionando os botões para cada especialidade
+                    especialidadesSet.forEach(especialidade => {
+                        const especialidadeBtn = document.createElement('button');
+                        especialidadeBtn.textContent = especialidade;
+                        especialidadeBtn.className = 'especialidade-btn';
+                        especialidadeBtn.onclick = () => filtrarMedicosPorEspecialidade(especialidade);
+                        especialidadesList.appendChild(especialidadeBtn);
+                    });
+                } else {
+                    console.error('Formato inesperado dos dados da resposta.');
+                    alert('Erro ao carregar médicos.');
+                }
+            } catch (error) {
+                console.error('Erro ao carregar os dados:', error);
+            }
+        }
+    
+        function filtrarMedicosPorEspecialidade(especialidade) {
+            const medicos = document.querySelectorAll('.profile-image');
+            medicos.forEach(medico => {
+                const medicoEspecialidade = medico.querySelector('p').textContent.replace('Especialidade: ', '');
+                if (medicoEspecialidade === especialidade || especialidade === 'Todas') {
+                    medico.style.display = 'block';
+                } else {
+                    medico.style.display = 'none';
+                }
+            });
+        }
+    
+        function toggleEspecialidades() {
+            const especialidadesList = document.getElementById('especialidades-list');
+            especialidadesList.style.display = especialidadesList.style.display === 'block' ? 'none' : 'block';
+        }
+    
+        window.onload = function () {
+            carregarMedicos();
+        };
+    </script>
+    
+</body>
+</html>

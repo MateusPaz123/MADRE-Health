@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Consultas</title>
+    <link rel="stylesheet" href="CSS/historico.css">
+</head>
+<body>
+    <!-- Menu Lateral -->
+    <div class="menu">
+        <button class="menu-btn" onclick="window.location.href='index.html'">
+            <img src="fotos/logo.jpg" alt="Home" class="icon">
+            <span class="label">Madre Health</span>
+        </button>
+        <button class="menu-btn" onclick="window.location.href='historico.html'">
+            <span class="emoji">📝</span>
+            <span class="label">Histórico</span>
+        </button>
+        <button class="menu-btn" onclick="window.location.href='perfil_paciente.php'">
+            <span class="emoji">😷</span>
+            <span class="label">Meu Perfil</span>
+        </button>
+        <button class="menu-btn" onclick="window.location.href='agendar.html'">
+            <span class="emoji">🖊️</span>
+            <span class="label">Agende sua consulta</span>
+        </button>
+    </div>
+
+    <!-- Barra de Pesquisa -->
+    <section class="search-section">
+        <h2>Filtrar Consultas pelo CPF</h2>
+        <form id="searchForm">
+            <div class="input-container">
+                <label for="cpf">Digite seu CPF:</label>
+                <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" oninput="mascaraCPF(this)" required>
+            </div>
+            <button type="submit" class="btn">Pesquisar</button>
+        </form>
+    </section>
+
+    <!-- Exibição de Consultas -->
+    <section class="appointments">
+        <h2>Consultas Agendadas</h2>
+        <ul id="appointmentList">
+            <!-- Consultas serão exibidas dinamicamente -->
+        </ul>
+    </section>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const cpf = document.getElementById('cpf').value;
+
+            // Faz a requisição para o PHP via AJAX
+            fetch('php/filtrar_historico.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `cpf=${cpf}`
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Atualiza a lista com os resultados obtidos
+                document.getElementById('appointmentList').innerHTML = data;
+            })
+            .catch(error => console.error('Erro:', error));
+        });
+        function mascaraCPF(cpf) {
+                let valor = cpf.value;
+
+                valor = valor.replace(/\D/g, "");
+
+                if (valor.length > 3) {
+                    valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+                }
+
+                if (valor.length > 6) {
+                    valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+                }
+
+                if (valor.length > 9) {
+                    valor = valor.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+                }
+
+                cpf.value = valor;
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário de Agendamentos</title>
+    <link rel="stylesheet" href="CSS/style_cal.css">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/pt-br.js'></script>
+</head>
+
+<body>
+    <!-- Menu Lateral -->
+    <div class="menu">
+        <!-- Botões do Menu -->
+        <button class="menu-btn" onclick="window.location.href='index.html'">
+            <img src="fotos/logo.jpg" alt="Home" class="icon"> 
+            <span class="label">Madre Health</span>
+        </button>
+
+        <button class="menu-btn1" onclick="window.location.href='calendario.html'">
+            <span class="emoji">📅</span>
+            <span class="label">Calendário</span>
+        </button>
+
+        <button class="menu-btn" onclick="window.location.href='perfil.html'">
+            <span class="emoji">🩺</span>
+            <span class="label">Meu Perfil</span>
+        </button>
+    </div>
+
+    <div class="header-text">
+        <h1>Olhe todas as consultas que estão marcadas!<br> Observe o calendário abaixo:</h1>
+    </div>
+
+    <!-- Calendário -->
+    <div id="calendar"></div>
+
+    <hr class="separator">
+
+    <!-- Modal para exibir informações do evento -->
+    <div id="eventModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2 id="eventPatientName">Nome do Paciente</h2>
+            <p><strong>Data da Consulta:</strong> <span id="eventDate"></span></p>
+            <p><strong>Horário:</strong> <span id="eventTime"></span></p>
+            <p><strong>CPF do Paciente:</strong> <span id="eventCpf"></span></p>
+            <p><strong>Médico:</strong> <span id="eventDoctor"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var modal = document.getElementById('eventModal');
+            var closeModal = document.getElementById('closeModal');
+
+            // Elementos para exibir informações do evento
+            var eventPatientName = document.getElementById('eventPatientName');
+            var eventDate = document.getElementById('eventDate');
+            var eventTime = document.getElementById('eventTime');
+            var eventCpf = document.getElementById('eventCpf');
+            var eventDoctor = document.getElementById('eventDoctor');
+
+            // Inicializa o calendário
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek',
+                editable: true,
+                selectable: true,
+                locale: 'pt-br',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'timeGridDay,timeGridWeek,dayGridMonth'
+                },
+                slotDuration: '00:30:00',
+                slotLabelFormat: {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                },
+                allDayText: 'Agende o horário',
+                eventClick: function(info) {
+                    // Exibe o modal com as informações do evento
+                    eventPatientName.textContent = info.event.extendedProps.patientName || 'Não informado';
+                    eventDate.textContent = new Date(info.event.start).toLocaleDateString('pt-BR');
+                    eventTime.textContent = `${new Date(info.event.start).toLocaleTimeString('pt-BR')} - ${info.event.end ? new Date(info.event.end).toLocaleTimeString('pt-BR') : 'Não definido'}`;
+                    eventCpf.textContent = info.event.extendedProps.cpf || 'Não informado';
+                    eventDoctor.textContent = info.event.extendedProps.doctorName || 'Não informado';
+
+                    modal.style.display = 'block';
+                }
+            });
+
+            // Fecha o modal ao clicar no botão de fechar
+            closeModal.onclick = function() {
+                modal.style.display = 'none';
+            };
+
+            // Fecha o modal ao clicar fora dele
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
+
+            // Carregar eventos do banco de dados
+            fetch('carregar_agendamentos.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length === 0) {
+                        console.log('Nenhum agendamento encontrado.');
+                    } else {
+                        data.forEach(event => {
+                            // Adiciona cada evento ao calendário
+                            calendar.addEvent({
+                                title: event.patientName,
+                                start: event.start,
+                                end: event.end,
+                                extendedProps: {
+                                    patientName: event.patientName,
+                                    cpf: event.cpf,
+                                    doctorName: event.doctorName
+                                },
+                                backgroundColor: event.backgroundColor,
+                                textColor: event.textColor,
+                            });
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar os eventos:', error);
+                });
+
+            calendar.render();
+        });
+    </script>
+</body>
+
+</html>

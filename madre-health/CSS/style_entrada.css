@@ -1,0 +1,188 @@
+/* Reset de margens e preenchimento, e definir box-sizing */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Estilo do corpo */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #005960, #009688);
+    /* Gradiente intenso */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+/* Contêiner principal */
+
+.container {
+    padding: 40px;
+    border-radius: 30px;
+    /* Cantos bem arredondados */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    /* Sombra forte */
+    width: 400px;
+    background: rgba(100, 161, 162, 0.9);
+    /* Fundo branco semi-transparente */
+    backdrop-filter: blur(15px);
+    /* Efeito de desfoque no fundo */
+    animation: fadeIn 0.5s ease-in-out;
+    /* Animação de entrada */
+}
+
+
+/* Animação de entrada do contêiner */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Estilo da logo */
+
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+/* Estilo da imagem da logo */
+
+.logo img {
+    display: block;
+    margin: 0 auto;
+    max-width: 120px;
+    height: auto;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    /* Sombra da imagem */
+}
+
+
+/* Estilo do título */
+
+h1 {
+    margin: 10px 0 5px;
+    color: #004d40;
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    /* Sombra do texto */
+    animation: slideIn 0.5s ease forwards;
+    /* Animação de entrada do título */
+    opacity: 0;
+    /* Começa invisível */
+}
+
+
+/* Animação de deslizamento do título */
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* Estilo do parágrafo */
+
+p {
+    margin: 0 0 15px;
+    color: #004d40;
+    font-size: 18px;
+    animation: slideIn 0.5s ease forwards;
+    /* Animação de entrada do parágrafo */
+    opacity: 0;
+    /* Começa invisível */
+    animation-delay: 0.2s;
+    /* Delay para o parágrafo aparecer depois do título */
+}
+
+
+/* Estilo do botão */
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #079a89, #004d40);
+    /* Gradiente no botão */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    /* Para efeitos internos */
+    transition: transform 0.2s ease;
+    margin-bottom: 15px;
+    /* Espaçamento entre os botões */
+    font-size: 16px;
+    font-weight: bold;
+    /* Texto em negrito */
+}
+
+
+/* Efeito de animação no botão */
+
+button:hover {
+    background-color: #1e5657;
+    /* Cor ao passar o mouse */
+    transform: scale(1.05);
+    /* Aumenta levemente o botão */
+}
+
+
+/* Efeito de brilho ao passar o mouse */
+
+button:hover::after {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: 50%;
+    left: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    /* Camada branca semi-transparente */
+    border-radius: 50%;
+    /* Forma circular */
+    transform: translate(-50%, -50%) scale(0);
+    /* Começa invisível */
+    transition: transform 0.4s ease;
+}
+
+
+/* Efeito ao passar o mouse no botão */
+
+button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    /* Fica visível ao passar o mouse */
+}
+
+
+/* Estilo do botão ao ser pressionado */
+
+button:active {
+    transform: translateY(0);
+    /* Retorna à posição normal */
+}

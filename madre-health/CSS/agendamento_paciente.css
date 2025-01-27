@@ -1,0 +1,231 @@
+/* Estilo geral */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(rgba(113, 198, 177, 0.842), rgba(36, 34, 183, 0.796));
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #2aeaba, #23535e);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Menu lateral */
+.menu {
+    width: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(135deg, #4491a3c0, #2aeabaf3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 20px;
+}
+
+.menu-btn {
+    border: none;
+    padding: 15px;
+    text-align: left;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+}
+
+.menu-btn:hover {
+    background-color: #5a8f7d;
+}
+
+.menu-btn img.icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.label {
+    opacity: 0;
+    visibility: hidden;
+    font-size: 14px !important;
+    transform: translateX(-30px);
+    transition: all 0.6s ease;
+    color: #28269797;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu-btn:hover .label {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    color: #5a8f7d;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #f1f1f1;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Sessões */
+section {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 800px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+section:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+section h2 {
+    margin-top: 0;
+    color: #007bff;
+    font-size: 24px;
+}
+
+/* Formulários */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin: 15px 0 5px;
+    color: #333;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+form button {
+    padding: 12px 20px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #218838;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos do calendário */
+#calendarContainer {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.calendar-day {
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.calendar-day.unavailable {
+    background-color: #f8d7da;
+    color: #721c24;
+    cursor: not-allowed;
+}
+
+.calendar-day.available {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.calendar-day:hover {
+    background-color: #c3e6cb;
+}
+
+.calendar-day.selected {
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #0056b3;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #calendarContainer {
+        max-width: 100%;
+    }
+
+    .calendar-day {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    form button {
+        font-size: 14px;
+    }
+}

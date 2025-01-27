@@ -1,0 +1,206 @@
+/* Estilo geral */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(rgba(113, 198, 177, 0.842), rgba(36, 34, 183, 0.796));
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Menu Lateral */
+.menu {
+    width: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(135deg, #4491a3c0, #2aeabaf3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-btn {
+    border: none;
+    padding: 15px;
+    text-align: left;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+}
+
+.menu-btn:hover {
+    background-color: #5a8f7d;
+}
+
+.menu-btn img.icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.emoji {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+/* As labels (textos) inicialmente estão invisíveis */
+.label {
+    opacity: 0;
+    visibility: hidden;
+    font-size: 14px !important;
+    transform: translateX(-30px);
+    transition: all 0.6s ease;
+    color: #28269797;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito de hover nos botões */
+.menu-btn:hover .label {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    color: #5a8f7d;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #f1f1f1;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo das seções */
+section {
+    margin-left: 90px; /* Ajuste para que o conteúdo não fique escondido atrás do menu */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 800px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+section ul {
+    list-style: none;
+    padding: 0;
+}
+
+section ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Estilo do sidebar */
+.sidebar {
+    margin-left: 90px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+}
+
+.sidebar h3 {
+    color: #007bff;
+}
+
+.medical-history p,
+.treatment-plan p {
+    margin: 10px 0;
+}
+
+.medical-history b,
+.treatment-plan b {
+    color: #333;
+}
+
+/* Formulários */
+form label {
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+/* Lista de consultas */
+.appointments ul {
+    list-style: none;
+    padding: 0;
+}
+
+.appointments ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Ajustes gerais */
+.container {
+    margin-left: 90px;
+    padding: 20px;
+    width: calc(100% - 70px);
+    box-sizing: border-box;
+}
+
+header {
+    background: linear-gradient(135deg, #2aeaba, #23535e);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 1px;
+    text-align: left;
+    padding-left: 20px;
+}

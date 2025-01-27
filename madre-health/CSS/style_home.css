@@ -1,0 +1,307 @@
+/* Estilos gerais do corpo */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #5debe4d0;
+}
+
+
+/* Menu lateral */
+
+.menu {
+    width: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(135deg, #4491a3c0, #2aeabaf3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Organiza os botões no topo */
+    padding-top: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 20px;
+    /* Dá um pequeno espaço na parte inferior */
+}
+
+
+/* Estilo para cada botão do menu */
+
+.menu-btn {
+    border: none;
+    padding: 15px;
+    text-align: left;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+    /* Espaçamento entre os botões */
+}
+
+
+/* Efeito de hover nos botões */
+
+.menu-btn:hover {
+    background-color: #5a8f7d;
+}
+
+
+/* Ajuste no tamanho da imagem */
+
+.menu-btn img.icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/* Alinhamento do emoji */
+
+.emoji {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+
+/* As labels (textos) inicialmente estão invisíveis */
+
+
+/* Estilo das labels (textos) */
+
+.label {
+    opacity: 0;
+    visibility: hidden;
+    font-size: 14px !important;
+    transform: translateX(-30px);
+    /* Começa levemente à esquerda */
+    transition: all 0.6s ease;
+    /* Aplica uma transição suave para todos os efeitos */
+    color: #28269797;
+    background-color: #ffffff;
+    /* Cor de fundo da caixa */
+    padding: 5px 10px;
+    /* Adiciona espaçamento dentro da caixa */
+    border-radius: 15px;
+    /* Bordas arredondadas */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave para dar profundidade */
+}
+
+.menu-btn1 {
+    background-color: #004080;
+    border: none;
+    padding: 15px;
+    text-align: left;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+    /* Espaçamento entre os botões */
+}
+
+
+/* Efeito de hover nos botões */
+
+.menu-btn1:hover {
+    background-color: #5a8f7d;
+}
+
+
+/* Ajuste no tamanho da imagem */
+
+.menu-btn1 img.icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.header-text {
+    text-align: center;
+    margin-top: 20px;
+    /* Distância do topo */
+    background: linear-gradient(135deg, #2aeaba, #23535e);
+    /* Cor de fundo mais elegante */
+    padding: 20px 0;
+    /* Espaçamento superior e inferior */
+    border-radius: 10px;
+    /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+}
+
+.header-text h1 {
+    font-size: 25px;
+    /* Aumentando o tamanho para dar mais impacto */
+    font-weight: 700;
+    /* Negrito */
+    color: #ffffff;
+    /* Cor do texto mais contrastante */
+    text-transform: uppercase;
+    /* Texto em maiúsculas */
+    letter-spacing: 3px;
+    /* Espaçamento entre as letras para dar mais sofisticação */
+    margin: 0;
+    /* Remove margem extra */
+    line-height: 1.2;
+    /* Distância entre linhas */
+    animation: fadeIn 1s ease-in-out;
+    /* Animação suave */
+}
+
+
+/* Animação para fade-in */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+        /* Leve movimento de deslizar para baixo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        /* Restaura para a posição normal */
+    }
+}
+
+.principal h2 {
+    font-size: 2.5em;
+    /* Aumenta o tamanho da fonte */
+    font-weight: bold;
+    /* Deixa a fonte mais grossa */
+    color: #004f54;
+    /* Cor do texto */
+    margin: 0;
+    /* Remove margens padrão */
+    line-height: 1.2;
+    /* Melhora o espaçamento entre linhas */
+    margin-left: 80px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    /* Adiciona sombra ao texto */
+    margin-top: 110px;
+}
+
+.principal p {
+    font-size: 1.5em;
+    /* Tamanho da fonte */
+    color: #125486ae;
+    /* Cor do texto */
+    margin-top: 10px;
+    /* Espaço acima do parágrafo */
+    margin-left: 80px;
+    margin-top: 15px;
+}
+
+
+/* Quando o botão é hoverado, a label se torna visível e é animada */
+
+.menu-btn:hover .label {
+    opacity: 1;
+    /* Torna a label visível */
+    visibility: visible;
+    /* Torna a visibilidade da label visível */
+    transform: translateX(0);
+    /* Move o texto para a posição original */
+    color: #5a8f7d;
+    /* Cor do texto ao passar o mouse */
+    font-size: 20px;
+    /* Aumenta o tamanho da fonte */
+    font-weight: bold;
+    /* Deixa o texto em negrito */
+    background-color: #f1f1f1;
+    /* Cor de fundo ao passar o mouse */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    /* Aumenta a sombra quando hover */
+}
+
+
+/* Colocando o botão "Sua Conta" na parte inferior */
+
+.menu .menu-btn:last-child {
+    margin-top: 280px;
+    /* Empurra o botão para a parte inferior */
+}
+
+.button-container {
+    margin-top: 20px;
+    /* Espaço acima dos botões */
+    display: flex;
+    /* Exibição flexível para alinhar os botões lado a lado */
+}
+
+.help-button,
+.info-button {
+    background-color: #084a58ca;
+    /* Cor de fundo */
+    color: #f0f3f8;
+    /* Cor do texto */
+    padding: 40px 10px;
+    /* Reduzir o espaçamento interno */
+    border: none;
+    /* Remove borda padrão */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    cursor: pointer;
+    /* Muda o cursor ao passar o mouse */
+    font-size: 14px;
+    /* Tamanho da fonte menor */
+    margin-right: 5px;
+    /* Espaço à direita entre os botões */
+    margin-left: 80px;
+    width: 100px;
+    /* Largura fixa para os botões */
+    transition: background 0.3s;
+    /* Efeito de transição */
+}
+
+.help-button:hover,
+.info-button:hover {
+    background-color: #052544;
+    /* Cor de fundo ao passar o mouse */
+    transform: scale(1.05);
+}
+
+.container {
+    display: flex;
+    justify-content: flex-end;
+    /* Alinha para a direita */
+    align-items: flex-start;
+    /* Alinha para o topo */
+}
+
+.right-image {
+    display: block;
+    /* Para que o link seja tratado como bloco */
+    margin-left: auto;
+    /* Margem à esquerda automática para empurrar a imagem para a direita */
+    margin-top: -170px;
+    /* Adiciona um pouco de espaço acima */
+    margin-right: 100px;
+    /* Adiciona espaço à direita */
+    text-align: right;
+    /* Para garantir que o texto dentro do link fique à direita */
+}
+
+.right-image img {
+    width: 550px;
+    /* Ajuste o tamanho da imagem como desejado */
+    height: auto;
+    /* Mantém a proporção da imagem */
+}

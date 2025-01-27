@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Madre-Health-Project</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+
+</head>
+
+<body>
+    <header>
+        <a href="" title="Mais sobre Madre-Health">
+            <img src="fotos/logo.jpg" alt="Descrição da imagem" width="100">
+        </a>
+        <h1>Madre Health</h1>
+
+
+        <nav>
+            <button onclick="window.location.href='entrada.html'">Entrar</button>
+        </nav>
+    </header>
+    <div class="principal">
+        <h2>Cuidar da saúde ficou<br> mais prático e rápido
+        </h2>
+        <p>Aplicação criada por estudantes do<br> Instituto Federal de São Paulo</p>
+    </div>
+
+    <!-- Botões de Ajuda e Como Funciona -->
+    <div class="button-container">
+        <button onclick="window.location.href='#como-funciona'" class="info-button">Como Funciona</button>
+        <button onclick="window.location.href='#sobre'" class="info-button">Sobre</button>
+
+    </div>
+    </div>
+
+    <div class="container">
+        <div class="right-image">
+            <a href="" title="Mais sobre Madre-Health" class="right-image">
+                <img src="fotos/M.png" alt="Descrição da imagem" width="150">
+            </a>
+        </div>
+    </div>
+
+    <hr class="separator">
+
+    <h2 id="como-funciona" class="como-funciona">🔍 Como Funciona</h2>
+
+
+    <div class="welcome-message">
+        <div class="process-steps">
+            <div class="step">
+                <span class="emoji">🗓️</span>
+                <h3>Agende Com Facilidade</h3>
+                <p>Navegue pelas opções de clínicas e especialistas, escolha a data e hora que se encaixam na sua rotina e, voilà! Sua consulta está marcada. E não se esqueça: um e-mail de confirmação vai direto para você!</p>
+            </div>
+            <div class="step">
+                <span class="emoji">❌</span>
+                <h3>Cancelamento Sem Complicação</h3>
+                <p>Mudou de planos? Sem problemas! Acesse sua conta, encontre a consulta que deseja cancelar e siga as instruções. Lembre-se de fazer isso com antecedência para que tudo fique em ordem.</p>
+            </div>
+        </div>
+    </div>
+
+        <hr class="separator-custom">
+
+
+        <h2 id="sobre" class="sobre-header">🔍 Sobre</h2>
+
+        <div class="development-message">
+
+            <h2>🌟 Saúde Rápida e Sem Complicação!</h2>
+            <p>O Madre Health facilita o agendamento de consultas médicas em Salto, conectando você a unidades de saúde públicas e privadas de forma rápida e sem complicação. Esqueça as filas intermináveis do SUS!<P>
+            <p>Com apenas alguns cliques, você agenda sua consulta e garante mais agilidade no atendimento.
+
+        
+        </div>
+
+        <button id="scrollToTopBtn" class="scroll-to-top-btn" onclick="scrollToTop()">⬆️</button>
+
+
+        <script src="JS/accordion.js"></script>
+        <!-- Link para o arquivo JavaScript -->
+
+        <script>
+            function showMedicoFunc() {
+                // Esconde a seção do paciente
+                document.getElementById('paciente').style.display = 'none';
+                // Mostra a seção do médico
+                document.getElementById('medico').style.display = 'block';
+            }
+
+            function showPacienteFunc() {
+                // Esconde a seção do médico
+                document.getElementById('medico').style.display = 'none';
+                // Mostra a seção do paciente
+                document.getElementById('paciente').style.display = 'block';
+            }
+        </script>
+
+        <script>
+            window.addEventListener('load', () => {
+                document.body.style.opacity = '1'; // Torna o corpo visível após o carregamento
+                document.querySelector('header').style.opacity = '1'; // Torna o cabeçalho visível
+                document.querySelectorAll('.principal h2, .principal p').forEach((element) => {
+                    element.style.opacity = '1'; // Torna os elementos visíveis
+                });
+                document.querySelector('footer').style.opacity = '1'; // Torna o rodapé visível
+            });
+
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Mostrar/ocultar o botão com base na rolagem da página
+            window.onscroll = function() {
+                var button = document.getElementById("scrollToTopBtn");
+                if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                    button.style.display = "block";
+                } else {
+                    button.style.display = "none";
+                }
+            };
+        </script>
+
+        <footer>
+            <p>&copy; 2024 Madre-Health</p>
+        </footer>
+</body>
+
+</html>

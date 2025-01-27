@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário de Agendamentos</title>
+    <link rel="stylesheet" href="CSS/style_cal.css">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/pt-br.js'></script>
+</head>
+
+<body>
+    <div class="menu">
+        <!-- Menu de navegação -->
+        <button class="menu-btn" onclick="window.location.href='index.html'">
+            <img src="fotos/logo.jpg" alt="Home" class="icon"> 
+            <span class="label">Madre Health</span>
+        </button>
+        <button class="menu-btn1" onclick="window.location.href='calendario.html'">
+            <span class="emoji">📅</span>
+            <span class="label">Calendário</span>
+        </button>
+        
+        <button class="menu-btn" onclick="window.location.href='perfil.html'">
+            <span class="emoji">🩺</span>
+            <span class="label">Meu Perfil</span>
+        </button>
+    </div>
+
+    <div class="header-text">
+        <h1>Reserve já o seu momento de cuidado!<br> Agende as consultas aqui:</h1>
+    </div>
+
+    <div class="container">
+        <button class="agendar-btn" id="agendarBtn">Agendar Consulta</button>
+    </div>
+
+    <div id="calendar"></div>
+
+    <hr class="separator">
+
+    <!-- Modal 1 para adicionar agendamento -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Novo Agendamento</h3>
+            <form id="agendamentoForm">
+                <label for="title">Nome:</label><br>
+                <input type="text" id="title" name="title" required><br><br>
+
+                <input type="submit" value="Adicionar">
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 2 para adicionar horário -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close2">&times;</span>
+            <h3>Defina o Horário</h3>
+            <form id="agendamentoForm2">
+                <label for="startTime2">Hora de Início:</label><br>
+                <input type="time" id="startTime2" name="startTime" required><br><br>
+
+                <label for="endTime2">Hora de Fim:</label><br>
+                <input type="time" id="endTime2" name="endTime" required><br><br>
+
+                <label for="data-de-agendamento">Selecione o dia:</label><br>
+                <input type="date" name="data_de_agendamento" id="data_de_agendamento" required><br><br>
+
+                <input type="submit" value="Confirmar Agendamento">
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de confirmação -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close3">&times;</span>
+            <h3>Agendamento Confirmado</h3>
+            <p>Seu agendamento foi adicionado com sucesso!</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var modal1 = document.getElementById("modal1");
+            var modal2 = document.getElementById("modal2");
+            var modal3 = document.getElementById("modal3");
+            var closeModal1 = document.querySelector(".close");
+            var closeModal2 = document.querySelector(".close2");
+            var closeModal3 = document.querySelector(".close3");
+            var selectedDate; // Armazena a data clicada
+            var title; // Armazena o nome do paciente
+    
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek',
+                editable: true,
+                selectable: true,
+                locale: 'pt-br',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'timeGridDay,timeGridWeek,dayGridMonth'
+                },
+                slotDuration: '00:30:00', // Intervalo de 30 minutos entre horários
+                slotLabelFormat: {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                },
+                allDayText: 'Agende o horário',
+                dateClick: function(info) {
+                    modal1.style.display = "flex"; // Exibe o primeiro modal
+                    selectedDate = info.dateStr; // Armazena a data clicada
+                },
+                eventClick: function(info) {
+                    alert('Evento: ' + info.event.title);
+                }
+            });
+    
+            // Carregar eventos
+            fetch('carregar_agendamentos.php')
+                .then(response => response.json())  
+                .then(data => {
+                    console.log('Eventos carregados:', data);
+                    if (data.length === 0) {
+                        console.log('Nenhum agendamento encontrado.');
+                    } else {
+                        data.forEach(event => {
+                            calendar.addEvent({
+                                title: event.title,
+                                start: event.start,
+                                end: event.end,
+                                backgroundColor: event.backgroundColor || '#3788d8', // Cor padrão
+                                textColor: event.textColor || '#ffffff' // Cor padrão
+                            });
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar os eventos:', error);
+                });
+    
+            calendar.render();
+    
+            document.getElementById('agendarBtn').onclick = function() {
+                modal1.style.display = "flex";
+            };
+    
+            closeModal1.onclick = function() {
+                modal1.style.display = "none";
+            };
+    
+            closeModal2.onclick = function() {
+                modal2.style.display = "none";
+            };
+    
+            closeModal3.onclick = function() {
+                modal3.style.display = "none";
+            };
+    
+            document.getElementById('agendamentoForm').onsubmit = function(e) {
+                e.preventDefault(); // Impede o envio imediato do formulário
+    
+                title = document.getElementById('title').value;
+    
+                if (!title) {
+                    alert("Preencha todos os campos!");
+                    return;
+                }
+    
+                // Armazena as informações no localStorage
+                localStorage.setItem("agendamentoTitle", title);
+    
+                // Mostra o modal para definir o horário
+                modal2.style.display = "flex";
+            };
+    
+            document.getElementById('agendamentoForm2').onsubmit = function(e) {
+                e.preventDefault(); // Impede o envio imediato do formulário
+    
+                var startTime = document.getElementById('startTime2').value;
+                var endTime = document.getElementById('endTime2').value;
+                var data = document.getElementById('data_de_agendamento').value;
+    
+                if (!startTime || !endTime || !data) {
+                    alert("Preencha todos os campos!");
+                    return;
+                }
+    
+                var eventData = {
+                    title: title,
+                    start: data + "T" + startTime,
+                    end: data + "T" + endTime,
+                    backgroundColor: '#3788d8',
+                    textColor: '#ffffff'
+                };
+    
+                // Enviar os dados para o servidor (PHP)
+                fetch('php/agendar_evento.php', {
+                    method: 'POST',
+                    body: JSON.stringify(eventData),
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    modal2.style.display = "none"; // Fechar o modal de horário
+                    modal3.style.display = "flex"; // Mostrar o modal de confirmação
+                    calendar.addEvent(eventData); // Adicionar evento ao calendário
+                })
+                .catch(error => console.error('Erro ao agendar evento:', error));
+            };
+        });
+    </script>
+    
+</body>
+
+</html>

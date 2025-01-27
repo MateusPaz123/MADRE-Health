@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="CSS/style_perfil.css">
+    <!-- Link para o arquivo CSS -->
+</head>
+
+<body>
+
+    <!-- Menu Lateral -->
+    <div class="menu">
+
+        <!-- Botões do Menu -->
+        <button class="menu-btn" onclick="window.location.href='index.html'">
+            <!-- Substitua 'path/to/your-image.png' pelo caminho correto da sua imagem -->
+            <img src="fotos/logo.jpg" alt="Home" class="icon"> 
+            <span class="label">Madre Health</span>
+        </button>
+
+        <button class="menu-btn" onclick="window.location.href='agendamento.html'">
+            <span class="emoji">📅</span>
+            <span class="label">Calendário</span>
+        </button>
+
+        <button class="menu-btn1" onclick="window.location.href='perfil.html'">
+            <span class="emoji">🩺</span>
+            <span class="label">Meu Perfil</span>
+        </button>
+
+    </div>
+    <div class="header-text">
+        <h1>Bem-vindo ao Madre Health,<br> onde cada detalhe é pensado para o seu bem-estar.
+        </h1>
+    </div>
+
+
+    <hr class="separator">
+    <hr class="separator-custom">
+
+
+    <div class="form-container">
+        <h2>Dados do Usuário</h2>
+
+        <form action="php/perfil.php" method="POST">
+
+            <label for="crm">CRM:</label>
+            <input type="text" id="crm" name="crm" value="" required>
+
+
+            <!-- CPF -->
+            <label for="cpf">CPF*</label>
+            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14" oninput="mascaraCPF(this)">
+
+            <!-- Celular -->
+            <label for="celular">Celular</label>
+            <input type="text" id="celular" name="celular" placeholder="() ____-_">
+
+
+            <label for="dias">Dias de Trabalho</label><br>
+            <div class="dias-trabalho">
+                <label class="checkbox-label">
+                    <input type="checkbox" name="dias_trabalho[]" value="0">
+                    Domingo
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="dias_trabalho[]" value="1">
+                    Segunda-feira
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="dias_trabalho[]"value="2">
+                    Terça-feira
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="dias_trabalho[]" value="3">
+                    Quarta-feira
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="dias_trabalho[]"value="4">
+                    Quinta-feira
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="dias_trabalho[]" value="5">
+                    Sexta-feira
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="dias_trabalho[]" value="6">
+                    Sábado
+                </label>
+            </div>
+
+            <div class="container" >
+                <!-- Botão de Salvar -->
+                <button type="submit" class="btn-salvar">Salvar</button>
+            </div>
+
+
+        </form>
+    </div>
+
+    <hr class="separator-custom">
+    <hr class="separator-custom">
+
+    <script>
+        function mascaraCPF(cpf) {
+            let valor = cpf.value;
+    
+            valor = valor.replace(/\D/g, "");
+    
+            if (valor.length > 3) {
+                valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+            }
+    
+            if (valor.length > 6) {
+                valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+            }
+    
+            if (valor.length > 9) {
+                valor = valor.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+            }
+    
+            cpf.value = valor;
+        }
+
+        
+    </script>
+</body>
+</html>

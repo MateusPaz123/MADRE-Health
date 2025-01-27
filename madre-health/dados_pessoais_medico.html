@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style_dpM.css">
+    <title>Formulário de Dados Pessoais Médico</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="logo">
+            <img src="fotos/logo.jpg" alt="Logo">
+            <h1>Dados Profissionais</h1>
+        </div>
+        <form class="personal-form" action="php/dados_pessoais_medico.php" method="POST" onsubmit="return validateForm()">
+            <div class="input-container">
+                <label for="name">Nome Completo:</label>
+                <div class="input-box">
+                    <input type="text" name="name" id="name" placeholder="Nome Completo" required onkeydown="handleKeyDown(event)">
+                </div>
+            </div>
+
+            <div class="input-container">
+                <label for="email">E-mail:</label>
+                <div class="input-box">
+                    <input type="email" id="email" name="email" placeholder="E-mail" required>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <label for="crm">CRM:</label>
+                <div class="input-box">
+                    <input type="text" id="crm" name="crm" placeholder="12345-SP" maxlength="8" oninput="formatCRM(this)" onblur="validateCRM(this)" required>
+                    <div id="crm-error" style="color: red;"></div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <label for="especialidade">Especialidade:</label>
+                <div class="input-box">
+                    <select name="especialidade" id="especialidade" required>
+                        <option value="TODAS" selected hidden>TODAS</option>
+                        <option value="ACUPUNTURA">ACUPUNTURA</option>
+                        <option value="ANESTESIOLOGIA">ANESTESIOLOGIA</option>
+                        <option value="CANCEROLOGIA">CANCEROLOGIA</option>
+                        <option value="CARDIOLOGIA">CARDIOLOGIA</option>
+                        <option value="CIRURGIA GERAL">CIRURGIA GERAL</option>
+                        <option value="DERMATOLOGIA">DERMATOLOGIA</option>
+                        <option value="ENDOCRINOLOGIA">ENDOCRINOLOGIA</option>
+                        <option value="FISIATRIA">FISIATRIA</option>
+                        <option value="GASTROENTEROLOGIA">GASTROENTEROLOGIA</option>
+                        <option value="GINECOLOGIA E OBSTETRÍCIA">GINECOLOGIA</option>
+                        <option value="HEMATOLOGIA">HEMATOLOGIA</option>
+                        <option value="INFECTOLOGIA">INFECTOLOGIA</option>
+                        <option value="NEUROLOGIA">NEUROLOGIA</option>
+                        <option value="OBSTETRÍCIA">OBSTETRÍCIA</option>
+                        <option value="ORTOPEDIA E TRAUMATOLOGIA">ORTOPEDIA</option>
+                        <option value="OTORRINOLARINGOLOGIA">OTORRINOLARINGOLOGIA</option>
+                        <option value="PEDIATRIA">PEDIATRIA</option>
+                        <option value="PSIQUIATRIA">PSIQUIATRIA</option>
+                        <option value="RADIOLOGIA">RADIOLOGIA</option>
+                        <option value="REUMATOLOGIA">REUMATOLOGIA</option>
+                        <option value="UROLOGIA">UROLOGIA</option>                        
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit">Avançar</button>
+        </form>
+
+        <script>
+            function formatCRM(crmInput) {
+                let crmValue = crmInput.value.replace(/[^0-9a-zA-Z]/g, '');
+                if (crmValue.length > 5) {
+                    crmValue = crmValue.substring(0, 5) + '-' + crmValue.substring(5, 7);
+                }
+                crmInput.value = crmValue.toUpperCase();
+            }
+
+            function validateCRM(crmInput) {
+                const regex = /^\d{5}-[0-9A-Z]{2}$/;
+                const errorMessage = document.getElementById('crm-error');
+
+                if (!regex.test(crmInput.value)) {
+                    errorMessage.textContent = "Por favor, insira um CRM válido no formato 12345-XX.";
+                    return false;
+                } else {
+                    errorMessage.textContent = "";
+                }
+                return true;
+            }
+
+            function validateForm() {
+                const crmInput = document.getElementById('crm');
+                return validateCRM(crmInput);
+
+                function handleKeyDown(event) {
+                if (event.key === " ") {
+                    const input = event.target;
+                    input.value = input.value.toUpperCase();
+                }
+            }
+            }
+        </script>
+    </div>
+</body>
+
+</html>
+

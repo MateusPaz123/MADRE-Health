@@ -1,0 +1,643 @@
+    /* Estilos básicos do corpo */
+    
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #78e6e48c 0%, #1f817dca 50%, #0b195be7 100%);
+        color: #333;
+    }
+    
+    body {
+        /* ...seus estilos existentes... */
+        opacity: 0;
+        /* Inicialmente invisível */
+        animation: fadeIn 1s forwards;
+        /* Animação de fadeIn */
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    /* Estilos do cabeçalho */
+    
+    header {
+        display: flex;
+        /* Adicionado para usar flexbox */
+        flex-direction: row;
+        align-items: center;
+        /* Alinha verticalmente ao centro */
+        justify-content: space-between;
+        /* Centraliza o conteúdo */
+        background: linear-gradient(135deg, #054644 0%, #17767f 100%);
+        color: aliceblue;
+        padding: 20px;
+        position: relative;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        animation: slideInDown 1s ease-out;
+        z-index: 10;
+        margin-top: 10px;
+    }
+    
+    header {
+        /* ...seus estilos existentes... */
+        animation: slideInDown 0.8s forwards;
+        /* Animação de slideInDown */
+        opacity: 0;
+        /* Inicialmente invisível */
+    }
+    /* Adicione a animação de slideInDown na definição de @keyframes */
+    
+    @keyframes slideInDown {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    /* LOGO*/
+    
+    .logo-title {
+        display: flex;
+        /* Alinha a imagem e o título verticalmente */
+    }
+    
+    header img {
+        max-width: 100px;
+        height: auto;
+        border-radius: 50%;
+        border: 4px solid #ffffff;
+        transition: transform 0.3s;
+        margin-right: 10px;
+        margin-left: 50px;
+    }
+    
+    header img:hover {
+        transform: rotate(360deg);
+    }
+    
+    header h1 {
+        font-size: 1.5em;
+        animation: fadeIn 1.5s ease-out;
+        margin: 0;
+        /* Removido para evitar margem extra */
+        flex-grow: 1;
+        /* Permite que o h1 ocupe o espaço disponível */
+        text-align: justify;
+        /* Alinha o texto à direita */
+    }
+    /* Estilos do menu de navegação */
+    
+    nav {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: flex-end;
+        /* Alinha os botões à direita */
+        padding: 0 50px;
+        /* Adiciona espaço nas laterais */
+    }
+    
+    nav button {
+        color: white;
+        text-decoration: none;
+        padding: 10px 60px;
+        border-radius: 5px;
+        border: none;
+        /* Remove a borda padrão do botão */
+        background: linear-gradient(135deg, #151257, #00b4c1d2);
+        cursor: pointer;
+        /* Muda o cursor para pointer */
+        transition: background 0.3s, transform 0.2s;
+    }
+    
+    nav button:hover {
+        background: linear-gradient(135deg, #054644 0%, #17767f 100%);
+        transform: scale(1.1);
+    }
+    /* Contêiner do menu */
+    
+    .menu-container {
+        position: relative;
+        display: inline-block;
+    }
+    /* Estilos para o botão do menu */
+    
+    .menu-button {
+        background-color: #eae5fd;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        position: relative;
+    }
+    /* Estilos para a lista suspensa */
+    
+    .dropdown {
+        display: none;
+        position: absolute;
+        background-color: #04312fa1;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        top: calc(100% + 5px);
+        /* Adiciona uma margem de 5px abaixo do botão */
+        left: 0;
+        min-width: 200px;
+        z-index: 1;
+    }
+    /* Estilos para os itens da lista */
+    
+    .dropdown a {
+        display: block;
+        color: #ffffff;
+        padding: 10px;
+        text-decoration: none;
+        font-size: 14px;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    /* Estilo para o último item sem borda */
+    
+    .dropdown a:last-child {
+        border-bottom: none;
+    }
+    /* Efeito de hover */
+    
+    .dropdown a:hover {
+        background-color: #0c044a;
+    }
+    /* Exibir o menu suspenso quando o contêiner estiver em hover ou o botão tiver foco */
+    
+    .menu-container:hover .dropdown,
+    .menu-button:focus+.dropdown {
+        display: block;
+    }
+    
+    .principal h2 {
+        font-size: 2.5em;
+        /* Aumenta o tamanho da fonte */
+        font-weight: bold;
+        /* Deixa a fonte mais grossa */
+        color: #004f54;
+        /* Cor do texto */
+        margin: 0;
+        /* Remove margens padrão */
+        line-height: 1.2;
+        /* Melhora o espaçamento entre linhas */
+        margin-left: 80px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        /* Adiciona sombra ao texto */
+        margin-top: 110px;
+    }
+    
+    .principal p {
+        font-size: 1.5em;
+        /* Tamanho da fonte */
+        color: #125486ae;
+        /* Cor do texto */
+        margin-top: 10px;
+        /* Espaço acima do parágrafo */
+        margin-left: 80px;
+        margin-top: 15px;
+    }
+    
+    .container {
+        display: flex;
+        justify-content: flex-end;
+        /* Alinha para a direita */
+        align-items: flex-start;
+        /* Alinha para o topo */
+    }
+    
+    .right-image {
+        display: block;
+        /* Para que o link seja tratado como bloco */
+        margin-left: auto;
+        /* Margem à esquerda automática para empurrar a imagem para a direita */
+        margin-top: -170px;
+        /* Adiciona um pouco de espaço acima */
+        margin-right: 100px;
+        /* Adiciona espaço à direita */
+        text-align: right;
+        /* Para garantir que o texto dentro do link fique à direita */
+    }
+    
+    .right-image img {
+        width: 550px;
+        /* Ajuste o tamanho da imagem como desejado */
+        height: auto;
+        /* Mantém a proporção da imagem */
+    }
+    
+    .button-container {
+        margin-top: 20px;
+        /* Espaço acima dos botões */
+        display: flex;
+        /* Exibição flexível para alinhar os botões lado a lado */
+    }
+    
+
+    .info-button {
+        background-color: #084a58ca;
+        /* Cor de fundo */
+        color: #f0f3f8;
+        /* Cor do texto */
+        padding: 40px 10px;
+        /* Reduzir o espaçamento interno */
+        border: none;
+        /* Remove borda padrão */
+        border-radius: 5px;
+        /* Bordas arredondadas */
+        cursor: pointer;
+        /* Muda o cursor ao passar o mouse */
+        font-size: 14px;
+        /* Tamanho da fonte menor */
+        margin-right: 5px;
+        /* Espaço à direita entre os botões */
+        margin-left: 80px;
+        width: 100px;
+        /* Largura fixa para os botões */
+        transition: background 0.3s;
+        /* Efeito de transição */
+    }
+    
+
+    .info-button:hover {
+        background-color: #052544;
+        /* Cor de fundo ao passar o mouse */
+        transform: scale(1.05);
+    }
+    /* Estilos do rodapé */
+    
+    footer {
+        background: #004f54;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .separator {
+        border: none;
+        /* Remove borda padrão */
+        height: 20px;
+        /* Altura da linha */
+        background-color: #004f54;
+        /* Cor da linha */
+        margin: 50px auto;
+        /* Espaço acima e abaixo da linha */
+        width: 25%;
+        border-radius: 10px;
+    }
+    
+    .como-funciona {
+        font-size: 2.5em;
+        /* Tamanho da fonte */
+        color: #007f7f;
+        /* Cor do texto */
+        margin: 110px 0 40px;
+        /* Espaçamento acima e abaixo */
+        text-align: center;
+        /* Centraliza o texto */
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        /* Sombra do texto */
+        border-bottom: 2px solid #004f54;
+        /* Linha abaixo do título */
+        padding-bottom: 10px;
+        /* Espaço abaixo do texto */
+        transition: color 0.3s;
+        /* Efeito de transição na cor */
+    }
+    
+    .como-funciona:hover {
+        color: #005757;
+        /* Cor ao passar o mouse */
+    }
+    
+    .welcome-message h2 {
+        font-size: 2.5em;
+        color: #007f7f;
+        margin-bottom: 10px;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, color 0.3s, text-shadow 0.3s;
+        /* Transições suaves para transformações, cor e sombra do texto */
+    }
+    
+    .welcome-message h2:hover {
+        transform: translateY(-5px) scale(1.05);
+        /* Aumenta ligeiramente e move para cima */
+        color: #005757;
+        /* Muda a cor ao passar o mouse */
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+        /* Sombra mais intensa */
+    }
+    
+    .welcome-message .process-steps {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+    
+    .welcome-message .step {
+        text-align: center;
+        background: linear-gradient(rgba(213, 243, 247, 0.547), rgba(108, 208, 236, 0.323));
+        /* Fundo suave para as etapas */
+        border-radius: 50px;
+        padding: 15px;
+        width: 40%;
+        /* Largura fixa para as etapas */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+        /* Transição suave para transformações, sombra e cor de fundo */
+    }
+    
+    .welcome-message .step:hover {
+        transform: scale(1.05);
+        /* Aumenta o tamanho das etapas ao passar o mouse */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        /* Aumenta a sombra */
+        background-color: rgba(192, 237, 233, 0.658);
+        /* Cor de fundo mais forte */
+    }
+    
+    .welcome-message .step .emoji {
+        font-size: 2em;
+        display: block;
+        margin-bottom: 10px;
+        transition: transform 0.3s;
+        /* Adiciona transição suave ao emoji */
+    }
+    
+    .welcome-message .step:hover .emoji {
+        transform: rotate(15deg);
+        /* Rotaciona o emoji ao passar o mouse */
+    }
+    
+    .welcome-message h3 {
+        font-size: 1.8em;
+        color: #005757;
+        margin-top: 15px;
+        border-bottom: 2px solid #007f7f;
+        padding-bottom: 5px;
+        transition: transform 0.3s, color 0.3s;
+    }
+    
+    .welcome-message h3:hover {
+        transform: translateX(5px);
+        /* Move levemente o subtítulo para a direita */
+        color: #004f54;
+        /* Muda a cor do subtítulo */
+    }
+    
+    .welcome-message p {
+        line-height: 1.6;
+        margin-bottom: 10px;
+        text-align: justify;
+        font-size: 0.95em;
+        /* Ligeiramente maior para melhor legibilidade */
+        transition: color 0.3s;
+    }
+    
+    .welcome-message p:hover {
+        color: #007f7f;
+        /* Muda a cor do texto quando passa o mouse */
+    }
+    
+    .welcome-message strong {
+        color: #004f54;
+    }
+    /**/
+    
+    
+    .separator-custom {
+        border: none;
+        /* Remove borda padrão */
+        height: 20px;
+        /* Altura da linha */
+        background-color: #004f54;
+        /* Cor da linha */
+        margin: 100px auto;
+        /* Espaço acima e abaixo da linha */
+        width: 25%;
+        border-radius: 10px;
+    }
+    
+    .sobre-header {
+        font-size: 2.5em;
+        /* Tamanho da fonte */
+        color: #2c3e50;
+        /* Cor do texto mais sóbria */
+        margin: 40px 0;
+        /* Espaçamento acima e abaixo */
+        text-align: center;
+        /* Centraliza o texto */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        /* Sombra mais suave */
+        border-bottom: 3px solid #439dd9ac;
+        /* Linha mais clara abaixo do título */
+        padding-bottom: 15px;
+        /* Espaço abaixo do texto */
+        transition: color 0.3s, border-color 0.3s;
+        /* Transições suaves */
+    }
+    
+    .sobre-header:hover {
+        color: #34628195;
+        /* Cor ao passar o mouse */
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+        /* Aumenta a sombra do texto */
+    }
+    /* Estilos da mensagem de desenvolvimento */
+    
+    .development-message {
+        background: linear-gradient(rgba(184, 202, 230, 0.392), rgba(74, 103, 178, 0.445));
+        /* Fundo mais opaco para maior legibilidade */
+        border-radius: 50px;
+        /* Bordas mais suaves */
+        padding: 25px;
+        /* Aumenta o espaço interno */
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        /* Sombra mais pronunciada */
+        margin: 20px auto;
+        /* Centraliza a mensagem */
+        max-width: 800px;
+        /* Limita a largura máxima */
+        transition: transform 0.3s, box-shadow 0.3s;
+        /* Efeitos de transição mais suaves */
+    }
+    
+    .development-message h2 {
+    text-align: center;
+    }
+
+    .development-message:hover {
+        transform: translateY(-5px);
+        /* Eleva levemente ao passar o mouse */
+        box-shadow: 0 8px 30px rgba(125, 195, 224, 0.37);
+        /* Sombra mais intensa ao passar o mouse */
+    }
+    
+    .contributions {
+        list-style-type: none;
+        /* Remove os marcadores */
+        padding: 0;
+        /* Remove o preenchimento */
+        margin: 20px 0;
+        /* Espaço vertical entre as listas */
+    }
+    /* Estilo para o botão de rolar para o topo */
+    /* Estilo para o botão de rolar para o topo */
+    
+    .scroll-to-top-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        padding: 15px 20px;
+        /* Aumentei um pouco o tamanho */
+        font-size: 22px;
+        cursor: pointer;
+        display: none;
+        /* Inicialmente oculto */
+        z-index: 1000;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        /* Sombras mais sutis */
+        transition: all 0.3s ease-in-out;
+        /* Transição suave */
+        transform: scale(1);
+        /* Estado inicial */
+    }
+    /* Efeito de hover - aumento de tamanho e mudança de cor */
+    
+    .scroll-to-top-btn:hover {
+        background-color: #075753;
+        /* Cor mais escura ao passar o mouse */
+        transform: scale(1.1);
+        /* Aumenta o botão levemente */
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        /* Sombras mais intensas */
+        animation: pulse 1s infinite;
+        /* Efeito de "pulse" */
+    }
+    /* Efeito de "pulse" */
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    /* Efeito de foco para acessibilidade */
+    
+    .scroll-to-top-btn:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(3, 120, 116, 0.6);
+        /* Um contorno azul claro ao focar no botão */
+    }
+    /* Efeito de clique */
+    
+    .scroll-to-top-btn:active {
+        transform: scale(0.95);
+        /* Diminui o botão levemente ao clicar */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        /* Sombra reduzida ao clicar */
+    }
+    
+    input,
+    select {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #004f54;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    input:focus,
+    select:focus {
+        border-color: #4CAF50;
+        box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+        outline: none;
+    }
+    /* Estilos dos rótulos */
+    
+    label {
+        display: block;
+        margin-top: 15px;
+        color: #333;
+    }
+    /* Estilos dos inputs de data */
+    
+    .date-input {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .date-input select {
+        width: 32%;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes slideInDown {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideInUp {
+        from {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }

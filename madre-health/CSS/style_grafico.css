@@ -1,0 +1,427 @@
+/* Estilos gerais do corpo */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(rgba(113, 198, 177, 0.842), rgba(36, 34, 183, 0.796));
+    /* Fundo mais suave */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* Menu lateral */
+
+.menu {
+    width: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(135deg, #4491a3c0, #2aeabaf3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Organiza os botões no topo */
+    padding-top: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 20px;
+    /* Dá um pequeno espaço na parte inferior */
+}
+
+
+/* Estilo para cada botão do menu */
+
+.menu-btn {
+    border: none;
+    padding: 15px;
+    text-align: left;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+    /* Espaçamento entre os botões */
+}
+
+
+/* Efeito de hover nos botões */
+
+.menu-btn:hover {
+    background-color: #5a8f7d;
+}
+
+
+/* Ajuste no tamanho da imagem */
+
+.menu-btn img.icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/* Alinhamento do emoji */
+
+.emoji {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+
+/* As labels (textos) inicialmente estão invisíveis */
+
+
+/* Estilo das labels (textos) */
+
+.label {
+    opacity: 0;
+    visibility: hidden;
+    font-size: 14px !important;
+    transform: translateX(-30px);
+    /* Começa levemente à esquerda */
+    transition: all 0.6s ease;
+    /* Aplica uma transição suave para todos os efeitos */
+    color: #28269797;
+    background-color: #ffffff;
+    /* Cor de fundo da caixa */
+    padding: 5px 10px;
+    /* Adiciona espaçamento dentro da caixa */
+    border-radius: 15px;
+    /* Bordas arredondadas */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave para dar profundidade */
+}
+
+
+/* Quando o botão é hoverado, a label se torna visível e é animada */
+
+.menu-btn:hover .label {
+    opacity: 1;
+    /* Torna a label visível */
+    visibility: visible;
+    /* Torna a visibilidade da label visível */
+    transform: translateX(0);
+    /* Move o texto para a posição original */
+    color: #5a8f7d;
+    /* Cor do texto ao passar o mouse */
+    font-size: 20px;
+    /* Aumenta o tamanho da fonte */
+    font-weight: bold;
+    /* Deixa o texto em negrito */
+    background-color: #f1f1f1;
+    /* Cor de fundo ao passar o mouse */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    /* Aumenta a sombra quando hover */
+}
+
+
+/* Colocando o botão "Sua Conta" na parte inferior */
+
+.menu .menu-btn:last-child {
+    margin-top: 280px;
+    /* Empurra o botão para a parte inferior */
+}
+
+.menu-btn1 {
+    background-color: #004080;
+    border: none;
+    padding: 15px;
+    text-align: left;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+    /* Espaçamento entre os botões */
+}
+
+
+/* Efeito de hover nos botões */
+
+.menu-btn1:hover {
+    background-color: #5a8f7d;
+}
+
+
+/* Ajuste no tamanho da imagem */
+
+.menu-btn1 img.icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/* As labels (textos) inicialmente estão invisíveis */
+
+
+/* Estilo das labels (textos) */
+
+.label {
+    opacity: 0;
+    visibility: hidden;
+    font-size: 14px !important;
+    transform: translateX(-30px);
+    /* Começa levemente à esquerda */
+    transition: all 0.6s ease;
+    /* Aplica uma transição suave para todos os efeitos */
+    color: #28269797;
+    background-color: #ffffff;
+    /* Cor de fundo da caixa */
+    padding: 5px 10px;
+    /* Adiciona espaçamento dentro da caixa */
+    border-radius: 15px;
+    /* Bordas arredondadas */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave para dar profundidade */
+}
+
+
+/* Quando o botão é hoverado, a label se torna visível e é animada */
+
+.menu-btn1:hover .label {
+    opacity: 1;
+    /* Torna a label visível */
+    visibility: visible;
+    /* Torna a visibilidade da label visível */
+    transform: translateX(0);
+    /* Move o texto para a posição original */
+    color: #5a8f7d;
+    /* Cor do texto ao passar o mouse */
+    font-size: 20px;
+    /* Aumenta o tamanho da fonte */
+    font-weight: bold;
+    /* Deixa o texto em negrito */
+    background-color: #f1f1f1;
+    /* Cor de fundo ao passar o mouse */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    /* Aumenta a sombra quando hover */
+}
+
+
+/* Colocando o botão "Sua Conta" na parte inferior */
+
+.menu .menu-btn1:last-child {
+    margin-top: 280px;
+    /* Empurra o botão para a parte inferior */
+}
+
+.header-text {
+    text-align: center;
+    margin-top: 20px;
+    /* Distância do topo */
+    background: linear-gradient(135deg, #2aeaba, #23535e);
+    /* Cor de fundo mais elegante */
+    padding: 20px 0;
+    /* Espaçamento superior e inferior */
+    border-radius: 10px;
+    /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+}
+
+.header-text h1 {
+    font-size: 19px;
+    /* Aumentando o tamanho para dar mais impacto */
+    font-weight: 700;
+    /* Negrito */
+    color: #ffffff;
+    /* Cor do texto mais contrastante */
+    text-transform: uppercase;
+    /* Texto em maiúsculas */
+    letter-spacing: 3px;
+    /* Espaçamento entre as letras para dar mais sofisticação */
+    margin: 0;
+    /* Remove margem extra */
+    line-height: 1.2;
+    /* Distância entre linhas */
+    animation: fadeIn 1s ease-in-out;
+    /* Animação suave */
+}
+
+
+/* Animação para fade-in */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+        /* Leve movimento de deslizar para baixo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        /* Restaura para a posição normal */
+    }
+}
+
+.separator {
+    border: none;
+    /* Remove borda padrão */
+    height: 20px;
+    /* Altura da linha */
+    /* Cor da linha */
+    margin: 50px auto;
+    /* Espaço acima e abaixo da linha */
+    width: 25%;
+    border-radius: 10px;
+}
+
+.dashboard {
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 180px;
+}
+
+.top-row,
+.main-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.box {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1;
+    margin: 5px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.box h3 {
+    font-size: 18px;
+    color: #555;
+    font-weight: 500;
+}
+
+.box span {
+    font-size: 32px;
+    color: #007bff;
+    display: block;
+    margin-top: 10px;
+}
+
+
+/* Estilos gerais do container */
+
+
+/* Estilos gerais do container */
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que as caixas quebrem para a linha seguinte em telas menores */
+    justify-content: flex-end;
+    /* Alinha as caixas para o lado direito */
+    gap: 10px;
+    /* Reduz o espaço entre as caixas para 10px */
+    margin: 10px;
+    /* Diminui a margem ao redor do container para 10px */
+    margin-left: 80px;
+}
+
+
+/* Estilos das caixas */
+
+.box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 50px;
+    width: 50%;
+    /* Garantir que as caixas ocupem 23% da largura do contêiner */
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Alinha o conteúdo dentro das caixas */
+}
+
+
+/* Títulos das caixas */
+
+.box h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+
+/* Ajustando o gráfico (canvas) para um tamanho fixo adequado */
+
+canvas {
+    width: 250px !important;
+    /* Tamanho fixo do gráfico (150px de largura) */
+    height: 250px !important;
+    /* Tamanho fixo do gráfico (150px de altura) */
+    margin: 0 auto;
+    /* Centraliza o gráfico na caixa */
+}
+
+
+/* Estilos para a barra de atendimento */
+
+.bar-chart {
+    display: flex;
+    margin-top: 15px;
+}
+
+.bar {
+    flex: 1;
+    height: 10px;
+    margin-right: 5px;
+}
+
+.bar.particular {
+    background-color: #3498db;
+    /* Cor para atendimento particular */
+}
+
+.bar.convenio {
+    background-color: #2ecc71;
+    /* Cor para atendimento conveniado */
+}
+
+
+/* Ajuste para dispositivos móveis */
+
+
+/* Para telas de até 768px (tablets), as caixas terão largura de 48% */
+
+@media screen and (max-width: 768px) {
+    .box {
+        width: 48%;
+    }
+}
+
+
+/* Para telas de até 480px (celulares), as caixas ocuparão 100% da largura */
+
+@media screen and (max-width: 480px) {
+    .box {
+        width: 100%;
+    }
+}
